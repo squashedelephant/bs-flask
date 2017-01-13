@@ -1,0 +1,60 @@
+flask:
+    api_version: {{key "bs/flask/api_version"}}
+    debug: {{key "bs/flask/debug"}}
+
+aws:
+    access_key: AKIAJABVAYONWGYTZJAQ
+    secret_access_key: 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
+    region: us-west-2
+    sqs_retry_limit: 3
+    sns_retry_limit: 3
+
+service:
+    max_attempts: {{key "service/max_attempts"}}
+    ms:
+    {{range service "ms"}}
+    - {{.Address}}:{{.Port}}{{end}}
+
+ms:
+    api_version: {{key "bs/ms/api_version"}}
+
+token:
+    expiration: 7200
+
+log_level: DEBUG
+logging:
+    version: 1
+    disable_existing_loggers: False
+    formatters:
+        verbose:
+            # these two are problematic when read from Consul Agent
+            format: "[%(asctime)s:%(levelname)s %(name)s::%(funcName)s(%(lineno)s)] %(message)s"
+            datefmt: "%Y-%m-%d %H:%M:%S"
+    handlers:
+        console:
+            level: DEBUG
+            class: logging.StreamHandler
+            formatter: verbose
+        logfile:
+            level: DEBUG
+            #class: logging.handlers.TimedRotatingFileHandler
+            filename: /logs/app.log
+            formatter: verbose
+            #when: midnight
+            backupCount: 2
+            encoding: UTF8
+            class: logging.handlers.RotatingFileHandler
+            maxBytes: 4000000                                                                                              
+    loggers:
+        bs:
+            handlers:
+                - console
+                - logfile
+            level: DEBUG
+            propogate: True
+        __main__:
+            handlers:
+                - console
+                - logfile
+            level: DEBUG
+            propogate: True
