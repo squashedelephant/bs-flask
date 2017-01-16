@@ -22,9 +22,9 @@ class TestMain(TestCase):
 
     def test_03_aws_subkeys(self):
         expected_keys = ['access_key', 'secret_access_key', 'region', 'sqs_retry_limit', 'sns_retry_limit']
-        self.assertEqual(len(expected_keys), len(config['service']))
+        self.assertEqual(len(expected_keys), len(config['aws']))
         for ek in expected_keys:
-            self.assertIn(ek, config['service'])
+            self.assertIn(ek, config['aws'])
 
     def test_04_service_subkeys(self):
         expected_keys = ['max_attempts', 'ms']
@@ -34,9 +34,9 @@ class TestMain(TestCase):
 
     def test_05_ms_subkeys(self):
         expected_keys = ['item_api_version', 'po_api_version']
-        self.assertEqual(len(expected_keys), len(config['service']))
+        self.assertEqual(len(expected_keys), len(config['ms']))
         for ek in expected_keys:
-            self.assertIn(ek, config['service'])
+            self.assertIn(ek, config['ms'])
 
     def test_06_token_subkeys(self):
         expected_keys = ['expiration']
