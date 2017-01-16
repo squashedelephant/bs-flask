@@ -12,7 +12,9 @@ aws:
 service:
     max_attempts: {{key "service/max_attempts"}}
     ms:
-    {{range service "ms"}}
+    {{range service "ms-item"}}
+    - {{.Address}}:{{.Port}}{{end}}
+    {{range service "ms-po"}}
     - {{.Address}}:{{.Port}}{{end}}
 
 ms:
