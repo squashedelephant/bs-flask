@@ -3,22 +3,23 @@ flask:
     debug: {{key "bs/flask/debug"}}
 
 aws:
-    access_key: AKIAJABVAYONWGYTZJAQ
-    secret_access_key: 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
-    region: us-west-2
-    sqs_retry_limit: 3
-    sns_retry_limit: 3
+    access_key: {{key "aws/access_key"}}
+    secret_access_key: {{key "aws/secret_access_key}}"
+    region: {{key "aws/region}}"
+    sqs_retry_limit: {{key "sqs/retry_limit"}}
+    sns_retry_limit: {{key "sns/retry_limit"}}
 
 service:
     max_attempts: {{key "service/max_attempts"}}
     ms:
-    {{range service "ms-item"}}
+    {{range service "ms_item"}}
     - {{.Address}}:{{.Port}}{{end}}
-    {{range service "ms-po"}}
+    {{range service "ms_po"}}
     - {{.Address}}:{{.Port}}{{end}}
 
 ms:
-    api_version: {{key "bs/ms/api_version"}}
+    item_api_version: {{key "bs/ms_item/api_version"}}
+    po_api_version: {{key "bs/ms_po/api_version"}}
 
 token:
     expiration: 7200
