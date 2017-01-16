@@ -23,7 +23,7 @@ class TestFactory(TestCase):
     def test_02_blueprints(self):
         app = Flask(__name__)
         register_blueprints(app)
-        expected_blueprints = ['item']
+        expected_blueprints = ['item', 'po']
         for bp in expected_blueprints:
             self.assertIn(bp, app.blueprints.keys())
 

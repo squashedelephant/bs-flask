@@ -4,7 +4,8 @@ from logging import getLogger
 from logging.config import dictConfig
 
 from app.common.settings import config
-from app.event.apis import apis as event_apis
+from app.item.apis import apis as item_apis
+from app.purchase_order.apis import apis as po_apis
 
 log = getLogger(__name__)
 
@@ -34,7 +35,7 @@ def register_blueprints(app):
     registration enables app to accept HTTP requests for endpoints
     """
     log.info('Registering blueprints')
-    blueprints = [event_apis]
+    blueprints = [item_apis, po_apis]
     for blueprint in blueprints:
         log.info('Registering {}'.format(blueprint.url_prefix))
         app.register_blueprint(blueprint)
