@@ -18,9 +18,9 @@ log.info('Listening on {}'.format(api_prefix))
 @apis.route('/', methods=['POST'])
 @timeit
 @retry
-def create(**kwargs):
+def stock(**kwargs):
     """
-    create a new Item object
+    stock a new Item object
     assume validation of mandatory args occurs downstream to ease future
     code maintenance
     return value: JSON dict with keys: data, status_code, reason 
@@ -52,7 +52,7 @@ def get_all(**kwargs):
 @retry
 def get_by_id(item_id, **kwargs):
     """
-    get existing Account object
+    get existing Item object by item_id
     assume validation of mandatory args occurs downstream to ease future
     code maintenance
     return value: JSON dict with keys: data, status_code, reason 

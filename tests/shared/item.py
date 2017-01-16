@@ -1,7 +1,7 @@
 
 from ujson import load
 
-class Account:
+class Item:
     @staticmethod
     def _load_fixture(f):
         try:
@@ -14,6 +14,6 @@ class Account:
             exit('ERROR: unable to read fixture: {}'.format(f))
 
     @staticmethod
-    def get_new_account():
-        fixture = '../../fixtures/account/new_account.json'
-        return Account._load_fixture(fixture)
+    def get_new_item():
+        fixture = '../../fixtures/item/new_item.json'
+        return Item._load_fixture(fixture)

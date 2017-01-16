@@ -1,7 +1,7 @@
 
 from ujson import load
 
-class Event:
+class PurchaseOrder:
     @staticmethod
     def _load_fixture(f):
         try:
@@ -14,6 +14,6 @@ class Event:
             exit('ERROR: unable to read fixture: {}'.format(f))
 
     @staticmethod
-    def get_new_event():
-        fixture = '../../fixtures/event/new_event.json'
-        return Event._load_fixture(fixture)
+    def get_new_purchase_order():
+        fixture = '../../fixtures/event/new_purchase_order.json'
+        return PurchaseOrder._load_fixture(fixture)

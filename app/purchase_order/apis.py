@@ -18,15 +18,17 @@ log.info('Listening on {}'.format(api_prefix))
 @apis.route('/', methods=['POST'])
 @timeit
 @retry
-def create(**kwargs):
+def submit(**kwargs):
     """
-    create a new PurchaseOrder object
+    submit a new PurchaseOrder object
     assume validation of mandatory args occurs downstream to ease future
     code maintenance
     return value: JSON dict with keys: data, status_code, reason 
                   where data is another dict with keys:
-                      po_id, account_id, items, total, submitted, filled, canceled
-                  and items is a dict with keys: item_id, name, sku, price, quantity
+                      po_id, account_id, items, total, submitted,
+                      filled, canceled
+                  and items is a dict with keys: item_id, name, sku,
+                      price, quantity
     """
     url = 'http://{}:{}/v{}/po/'.format(host,
                                         port,
@@ -43,8 +45,10 @@ def get_active(**kwargs):
     code maintenance
     return value: JSON dict with keys: data, status_code, reason 
                   where data is a list of dict with keys:
-                      po_id, account_id, items, total, submitted, filled, canceled
-                  and items is a dict with keys: item_id, name, sku, price, quantity
+                      po_id, account_id, items, total, submitted,
+                      filled, canceled
+                  and items is a dict with keys: item_id, name, sku,
+                      price, quantity
     """
     url = 'http://{}:{}/v{}/po/list'.format(host,
                                             port,
@@ -61,8 +65,10 @@ def get_by_id(po_id, **kwargs):
     code maintenance
     return value: JSON dict with keys: data, status_code, reason 
                   where data is another dict with keys:
-                      po_id, account_id, items, total, submitted, filled, canceled
-                  and items is a dict with keys: item_id, name, sku, price, quantity
+                      po_id, account_id, items, total, submitted,
+                      filled, canceled
+                  and items is a dict with keys: item_id, name, sku,
+                      price, quantity
     """
     url = 'http://{}:{}/v{}/po/{}'.format(host,
                                           port,
@@ -80,8 +86,10 @@ def update(po_id, **kwargs):
     code maintenance
     return value: JSON dict with keys: data, status_code, reason 
                   where data is another dict with keys:
-                      po_id, account_id, items, total, submitted, filled, canceled
-                  and items is a dict with keys: item_id, name, sku, price, quantity
+                      po_id, account_id, items, total, submitted,
+                      filled, canceled
+                  and items is a dict with keys: item_id, name, sku,
+                      price, quantity
     """
     url = 'http://{}:{}/v{}/po/{}/update'.format(host,
                                                  port,
