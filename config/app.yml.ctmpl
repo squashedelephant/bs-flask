@@ -4,8 +4,8 @@ flask:
 
 aws:
     access_key: {{key "aws/access_key"}}
-    secret_access_key: {{key "aws/secret_access_key}}"
-    region: {{key "aws/region}}"
+    secret_access_key: {{key "aws/secret_access_key"}}
+    region: {{key "aws/region"}}
     sqs_retry_limit: {{key "sqs/retry_limit"}}
     sns_retry_limit: {{key "sns/retry_limit"}}
 
@@ -16,6 +16,16 @@ service:
     - {{.Address}}:{{.Port}}{{end}}
     {{range service "ms_po"}}
     - {{.Address}}:{{.Port}}{{end}}
+
+sqs:
+    retry_limit: {{key "sqs/retry_limit"}}
+    item_queue_name: item
+    po_queue_name: purchase-order
+
+sns:
+    retry_limit: {{key "sns/retry_limit"}}
+    item_topic_name: widget
+    po_topic_name: po
 
 ms:
     item_api_version: {{key "bs/ms_item/api_version"}}

@@ -6,8 +6,8 @@ from app.common.settings import config
 from app.shared.task import Task
 from utils.decorator import retry, timeit
 
-host, port = config['service']['ms_item'][0].split(':')
-api_version = config['ms_item']['api_version']
+host, port = config['service']['ms'][0].split(':')
+api_version = config['ms']['item_api_version']
 api_name = 'item'
 api_prefix = '/v{}/{}'.format(config['flask']['api_version'], api_name)
 apis = Blueprint(api_name, __name__, url_prefix=api_prefix)
