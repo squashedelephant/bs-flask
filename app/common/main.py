@@ -2,7 +2,7 @@ from gevent.wsgi import WSGIServer
 
 from app.common.factory import create_app
 
-app = create_app('bs_flask')
+app = create_app('bs')
 
 if __name__ == '__main__':
     # start WSGI http server as undefined host
